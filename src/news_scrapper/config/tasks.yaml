@@ -1,0 +1,33 @@
+retrieve_news_task:
+  description: >
+    Search the internet for the latest news articles related to {topic}.
+    Use search tools to find credible sources, and return a list of URLs
+    to the most relevant and recent articles.
+  expected_output: >
+    A list of 5–10 URLs pointing to recent and reliable news articles on {topic}.
+  agent: retrieve_news
+
+website_scrape_task:
+  description: >
+    Scrape the content from the provided URLs. Extract article titles,
+    body text, publication dates, and any other relevant metadata.
+  expected_output: >
+    A structured summary of each article, including title, date, and main content.
+  agent: website_scraper
+
+ai_news_write_task:
+  description: >
+    Using the extracted article content, write a clear and engaging news
+    summary or short article that captures the key points across sources.
+  expected_output: >
+    A single, coherent news summary composed from the scraped articles, written
+    in an informative and neutral tone with heading about each topic.
+  agent: ai_news_writer
+
+file_write_task:
+  description: >
+    Save the final AI-generated news article to a local file in the appropriate
+    directory, naming it based on the {topic} and current date.
+  expected_output: >
+    A fully fledge news article with all information from previous task into a file named {date}_news_article.md
+  agent: file_writer
